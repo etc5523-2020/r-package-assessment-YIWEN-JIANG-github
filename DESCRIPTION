@@ -1,15 +1,14 @@
-Package: yourPkg
-Title: What the Package Does (One Line, Title Case)
+Package: COVID19dashboard
+Title: COVID-19 Pandemic shiny dashboard
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Yiwen",
+           family = "Jiang",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "yjia0021@student.monash.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+Description: Provides dataset and functions for use the COVID-19 pandemic shiny dashboard.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
