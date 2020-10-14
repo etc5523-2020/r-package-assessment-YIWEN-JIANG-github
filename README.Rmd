@@ -16,9 +16,10 @@ knitr::opts_chunk$set(
 # COVID19dashboard
 
 <!-- badges: start -->
+[![R build status](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/actions)
 <!-- badges: end -->
 
-The goal of COVID19dashboard is to ...
+The goal of COVID19dashboard is to provides datasets and functions for run the COVID-19 shiny dashboard.
 
 ## Installation
 
