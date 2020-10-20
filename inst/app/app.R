@@ -3,9 +3,10 @@
 
 
 # Load required packages
+library(COVID19dashboard)
 library(shiny)
 library(tidyverse)
-#library(rnaturalearth)
+library(rnaturalearth)
 #library(rnaturalearthdata)
 library(plotly)
 library(shinydashboard)
@@ -13,7 +14,6 @@ library(lubridate)
 library(scales)
 library(kableExtra)
 library(here)
-library(COVID19dashboard)
 
 
 ########## Load data ################

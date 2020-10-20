@@ -14,9 +14,10 @@
 #' @format NULL
 #' @usage NULL
 #' 
-#' @examples 
+#' @example 
+#' \dontrun{
 #' launch_app()
-#' 
+#' }
 #' 
 #' @export
 

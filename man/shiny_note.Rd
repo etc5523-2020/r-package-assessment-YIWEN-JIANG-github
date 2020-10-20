@@ -3,9 +3,6 @@
 \name{shiny_note}
 \alias{shiny_note}
 \title{Add a note box into shiny app}
-\usage{
-
-}
 \arguments{
 \item{...}{HTML tags used to add text into shiny app}
 }
@@ -14,17 +11,14 @@
 Using HTML tags to write you own notes for your shiny app,
 including How to interactive with the app, what does the output mean
 }
-\details{
-
-}
 \examples{
+\dontrun{
 shiny_note(
     tags$h3("Background & Purpose of this app"),
-    h5("In December 2019, cases of severe respiratory illness began to be reported across the city of Wuhan in China. These were caused by a new type of coronavirus, and the disease is now commonly referred to as COVID-19. The number of COVID-19 cases started to escalate more quickly in mid-January and the virus soon spread beyond China's borders. This story has been rapidly evolving ever since, and each day we are faced by worrying headlines regarding the current state of the outbreak."),
-    h5("In isolation, these headlines can be hard to interpret. How fast is the virus spreading? How does the situation difference between countries? What kind of changes has been made to people’s lifestyles in response to the pandemic?"),
-    h5("This site is the visualisation of the COVID-19 datasets which are provided by Our World in Data. By looking beyond the headlines, we hope it is possible to get a deeper understanding of this unfolding pandemic."),
+    h5("In December 2019..."),
     tags$h3("Code"),
-    "Code and input data used to generate this Shiny app are available on ",tags$a(href="https://github.com/etc5523-2020/shiny-assessment-YIWEN-JIANG-github.git", "Github.")
+    "Code and input data used to generate this Shiny app are available on..."
     )
+}
 
 }

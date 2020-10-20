@@ -6,15 +6,16 @@
 #' or a lazy data frame (e.g. from dbplyr or dtplyr). 
 #' @param col Columns that inserts a comma every three digits
 #' 
-#' @details 
+#' @details NULL
 #' 
 #' 
-#' 
+#' @import scales
 #' 
 #' 
 #' @format NULL
-#' @usage 
+#' @usage NULL
 #' 
+#' @import tibble
 #' 
 #' @examples 
 #' df <- add_comma(covid_raw, c("total_cases", "new_cases"))

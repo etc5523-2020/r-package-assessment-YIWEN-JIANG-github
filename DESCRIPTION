@@ -15,9 +15,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10),
-    tibble,
     shiny,
-    rnaturalearth
+    scales,
+    tibble
 Suggests: 
     knitr,
     rmarkdown,
@@ -25,3 +25,4 @@ Suggests:
     dplyr,
     tidyverse
 VignetteBuilder: knitr
+
