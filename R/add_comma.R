@@ -9,13 +9,13 @@
 #' @details NULL
 #' 
 #' 
-#' @import scales
+#' @import 
 #' 
 #' 
 #' @format NULL
 #' @usage NULL
 #' 
-#' @import tibble
+#' @import tibble, scales
 #' 
 #' @examples 
 #' df <- add_comma(covid_raw, c("total_cases", "new_cases"))
