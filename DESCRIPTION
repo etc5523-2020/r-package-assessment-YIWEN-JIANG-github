@@ -1,5 +1,5 @@
 Package: COVID19dashboard
-Title: COVID-19 Pandemic shiny dashboard
+Title: COVID-19 Pandemic Shiny Dashboard
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Yiwen",
@@ -14,7 +14,14 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
-    R (>= 2.10)
-Imports: 
+    R (>= 2.10),
     tibble,
-    shiny
+    shiny,
+    rnaturalearth
+Suggests: 
+    knitr,
+    rmarkdown,
+    ggplot2,
+    dplyr,
+    tidyverse
+VignetteBuilder: knitr

@@ -11,16 +11,23 @@
 #' As of 11 October 2020, more than 37.2 million cases have been confirmed as well as more than 1.07 million deaths attributed to COVID-19. 
 #' The aim of this shiny dashboard is to complement the raw data by providing interactive visualisation which is not available by the news, including the timeline function and the ability to compare between countries.
 #' 
+#' @format NULL
+#' @usage NULL
 #' 
-#' 
-#' 
-#' 
-#' @example 
+#' @examples 
 #' launch_app()
 #' 
 #' 
 #' @export
 
-launch_app <- function(){
-  runApp('inst/app')
+launch_app <- function() {
+  appDir <- system.file("app", package = "COVID19dashboard")
+  if (appDir == "") {
+    stop("Could not find shiny app in the directory. Try re-installing `COVID19dashboard`.", call. = FALSE)
+    }
+  
+  shiny::runApp(appDir, display.mode = "normal")
 }
+
+
+

@@ -5,9 +5,10 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 
 # World map data
-world_sf <- ne_countries(scale = "medium", returnclass = "sf") 
+# world_sf <- ne_countries(scale = "medium", returnclass = "sf") %>%
+#   select(-0:-9, -11:-50)
 
-visitor_category <- read_csv("data-raw/visitor_map/change-visitors-grocery-stores.csv") %>%
+visitor_map <- read_csv("data-raw/visitor_map/change-visitors-grocery-stores.csv") %>%
   full_join(read_csv("data-raw/visitor_map/change-visitors-parks-covid.csv"), by = c("Entity", "Code", "Date")) %>%
   full_join(read_csv("data-raw/visitor_map/change-visitors-retail-recreation.csv"), by = c("Entity", "Code", "Date")) %>%
   full_join(read_csv("data-raw/visitor_map/changes-residential-duration-covid.csv"), by = c("Entity", "Code", "Date")) %>%
@@ -15,8 +16,8 @@ visitor_category <- read_csv("data-raw/visitor_map/change-visitors-grocery-store
   full_join(read_csv("data-raw/visitor_map/workplace-visitors-covid.csv"), by = c("Entity", "Code", "Date")) %>%
   pivot_longer(cols = 4:9, names_to = "category", values_to = "change")
 
-visitor_map <- world_sf %>%
-  inner_join(visitor_category, by = c("adm0_a3" = "Code"))
+# visitor_map <- world_sf %>%
+#   inner_join(visitor_category, by = c("adm0_a3" = "Code"))
 
 
 

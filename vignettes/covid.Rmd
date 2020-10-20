@@ -1,0 +1,59 @@
+---
+title: "COVID-19 Pandemic"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{COVID-19 Pandemic}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=7, 
+  fig.height=4.5,
+  fig.align='center'
+)
+```
+
+The **COVID19dashboard** package used to provide interactive visualisation of the COVID-19 pandemic dataset by using shiny dashboard. The COVID-19 data contains the data over 210 countries since 31 Dec, 2019. The COVID-19 data sourced from [Our World in Data](https://ourworldindata.org/coronavirus).
+
+The package and part of the data can be accessed via:
+
+```{r setup}
+library(COVID19dashboard)
+library(tibble)
+covid_raw
+```
+
+By using the `launch_app()` function to run the shiny dashboard. The aim of this app is to complement the raw data by providing interactive visualisation, and used to compare the difference between the countries.  
+
+```{r launch-shiny-app, eval=FALSE}
+launch_app()
+```
+
+The shiny app contains four tabs:  Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.  
+
+- **Data**: To display the raw data used in this app, users can select the variables and observations they want to view.  
+- **About**: Relevant information about this app, such background of the COVID-19, code used to create this app, creator and references.  
+- **Change in Visitors by Category**: Show the change in the frequency of people going to the places compared to before the pandemic.  
+- **COVID-19 Cases/Deaths**: Use plots and tables to show the difference in the number of cases and deaths between countries, as well as the trend of those number changes over the past few months.  
+
+# Exploration of the data
+
+Change in the number of daily new cases in United States:
+
+```{r usa-daily-new-cases}
+library(ggplot2)
+library(tidyverse)
+covid_raw %>%
+  dplyr::filter(location == "United States") %>%
+  ggplot() +
+  geom_line(aes(x = date, y = new_cases)) +
+  theme_classic() +
+  ylab("Number of Daily New Cases") +
+  xlab("Date") +
+  ggtitle("Number of Daily New Cases in United States")
+```
+

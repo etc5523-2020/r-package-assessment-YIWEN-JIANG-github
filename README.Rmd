@@ -19,15 +19,11 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/actions)
 <!-- badges: end -->
 
+## Overview
+
 The goal of COVID19dashboard is to provides datasets and functions for run the COVID-19 shiny dashboard.
 
 ## Installation
-
-<!-- You can install the released version of COVID19dashboard from [CRAN](https://CRAN.R-project.org) with: -->
-
-<!-- ``` r -->
-<!-- install.packages("COVID19dashboard") -->
-<!-- ``` -->
 
 The development version can be installed from [GitHub](https://github.com/) with:
 
@@ -35,9 +31,24 @@ The development version can be installed from [GitHub](https://github.com/) with
 # install.packages("devtools")
 devtools::install_github("etc5523-2020/r-package-assessment-YIWEN-JIANG-github")
 ```
+
+## Get started
+
+The data set records COVID-19 information since Dec 31, 2019 and provided by [Our World in Data](https://ourworldindata.org/coronavirus). 
+The package include three data, which are `covid_raw`, `visitor_map` and `visitors_total`.  
+- `covid_raw`: The data comes from covid_raw.rda. The data contains the COVID-19 information OF 210 countries since Dec 31, 2019.   
+- `visitors_total`: The data comes from visitors_total.rda. The data contains the information how the number of visitors change sine pandemic for different places.   
+- `visitor_map`:  The data comes from visitor_map.rda. The data added geometric information compare to `visitors_total`, it can be used to create map plot.    
+
+By using the `launch_app()` function to run the shiny dashboard. The aim of this app is to complement the raw data by providing interactive visualisation, and used to compare the difference between the countries.  
+
+```{r launch-shiny-app, eval=FALSE}
+launch_app()
+```
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you the COVID-19 data in this package:
 
 ```{r example}
 library(COVID19dashboard)
@@ -45,3 +56,17 @@ library(tibble)
 covid_raw
 ```
 
+Change in the number of daily new cases in United States:
+
+```{r usa-daily-new-cases}
+library(ggplot2)
+library(tidyverse)
+covid_raw %>%
+  dplyr::filter(location == "United States") %>%
+  ggplot() +
+  geom_line(aes(x = date, y = new_cases)) +
+  theme_classic() +
+  ylab("Number of Daily New Cases") +
+  xlab("Date") +
+  ggtitle("Number of Daily New Cases in United States")
+```

@@ -9,18 +9,12 @@
 status](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/actions)
 <!-- badges: end -->
 
+## Overview
+
 The goal of COVID19dashboard is to provides datasets and functions for
 run the COVID-19 shiny dashboard.
 
 ## Installation
-
-<!-- You can install the released version of COVID19dashboard from [CRAN](https://CRAN.R-project.org) with: -->
-
-<!-- ``` r -->
-
-<!-- install.packages("COVID19dashboard") -->
-
-<!-- ``` -->
 
 The development version can be installed from
 [GitHub](https://github.com/) with:
@@ -30,12 +24,38 @@ The development version can be installed from
 devtools::install_github("etc5523-2020/r-package-assessment-YIWEN-JIANG-github")
 ```
 
+## Get started
+
+The data set records COVID-19 information since Dec 31, 2019 and
+provided by [Our World in Data](https://ourworldindata.org/coronavirus).
+The package include three data, which are `covid_raw`, `visitor_map` and
+`visitors_total`.  
+\- `covid_raw`: The data comes from covid\_raw.rda. The data contains
+the COVID-19 information OF 210 countries since Dec 31, 2019.  
+\- `visitors_total`: The data comes from visitors\_total.rda. The data
+contains the information how the number of visitors change sine pandemic
+for different places.  
+\- `visitor_map`: The data comes from visitor\_map.rda. The data added
+geometric information compare to `visitors_total`, it can be used to
+create map plot.
+
+By using the `launch_app()` function to run the shiny dashboard. The aim
+of this app is to complement the raw data by providing interactive
+visualisation, and used to compare the difference between the countries.
+
+``` r
+launch_app()
+```
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you the COVID-19 data in this
+package:
 
 ``` r
 library(COVID19dashboard)
+#> Loading required package: tibble
+#> Loading required package: shiny
 library(tibble)
 covid_raw
 #> # A tibble: 46,484 x 41
@@ -66,3 +86,27 @@ covid_raw
 #> #   handwashing_facilities <dbl>, hospital_beds_per_thousand <dbl>,
 #> #   life_expectancy <dbl>, human_development_index <dbl>
 ```
+
+Change in the number of daily new cases in United States:
+
+``` r
+library(ggplot2)
+library(tidyverse)
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ✓ tidyr   1.1.2     ✓ dplyr   1.0.2
+#> ✓ readr   1.4.0     ✓ stringr 1.4.0
+#> ✓ purrr   0.3.4     ✓ forcats 0.5.0
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
+covid_raw %>%
+  dplyr::filter(location == "United States") %>%
+  ggplot() +
+  geom_line(aes(x = date, y = new_cases)) +
+  theme_classic() +
+  ylab("Number of Daily New Cases") +
+  xlab("Date") +
+  ggtitle("Number of Daily New Cases in United States")
+```
+
+<img src="man/figures/README-usa-daily-new-cases-1.png" width="100%" />

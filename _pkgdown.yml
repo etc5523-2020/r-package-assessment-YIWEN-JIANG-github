@@ -1,0 +1,16 @@
+template:
+  params:
+    bootswatch: cerulean
+    
+navbar:
+  structure:
+    left: [help]
+    right: [github]
+  components:
+    home: ~
+    help:
+      text: Get Started
+      herf: articles/covid.html
+    github:
+      icon: fa-github
+      href: https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github

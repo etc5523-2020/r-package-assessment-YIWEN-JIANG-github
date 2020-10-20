@@ -5,24 +5,27 @@
 # Load required packages
 library(shiny)
 library(tidyverse)
-library(rnaturalearth)
-library(rnaturalearthdata)
+#library(rnaturalearth)
+#library(rnaturalearthdata)
 library(plotly)
 library(shinydashboard)
 library(lubridate)
 library(scales)
 library(kableExtra)
 library(here)
-
-
-
+library(COVID19dashboard)
 
 
 ########## Load data ################
 
-load(here::here("data/covid_raw.rda"))
-load(here::here("data/visitor_map.rda"))
-load(here::here("data/visitors_total.rda"))
+world_sf <- ne_countries(scale = "medium", returnclass = "sf")
+
+visitor_map <- world_sf %>%
+    inner_join(visitor_map, by = c("adm0_a3" = "Code"))
+
+# load(here::here("data/covid_raw.rda"))
+# load(here::here("data/visitor_map.rda"))
+# load(here::here("data/visitors_total.rda"))
 
 
 ######### Shiny UI #########
@@ -35,7 +38,7 @@ ui <- dashboardPage(
         menuItem("About", tabName = "about", icon = icon("pen-alt")),
         menuItem("Change in Visitors by Category", tabName = "visitor_category", icon = icon("map-marked-alt")),
         menuItem("COVID-19 Cases/Deaths", tabName = "covid_cases", icon = icon("chart-line"))
-        )),
+    )),
     dashboardBody(
         tabItems(
             # First tab (Data)
@@ -59,7 +62,7 @@ ui <- dashboardPage(
                                                selected = c("iso_code", "continent", 
                                                             "location", "date", 
                                                             "total_cases", "new_cases")))
-                               ),
+                        ),
                         column(width = 3,
                                # Rows selection box
                                box(width = NULL, status = "warning",
@@ -73,12 +76,12 @@ ui <- dashboardPage(
                                    tags$li("With the 'Select variable' option in the top left corner, you can select the part of the variables in the raw data."),  
                                    tags$li("With the 'Rows to show' option in the middle, you can select the part of the observations in the raw data."), 
                                    tags$dt("Most of the values of the variables 'Total tests' and 'New tests' are missing.")))
-                        ),
+                    ),
                     
                     fluidRow(
                         column(width = 12,
                                box(width = NULL, status = "warning",
-                                          tableOutput("rawtable"))) # Display the COVID data)
+                                   tableOutput("rawtable"))) # Display the COVID data)
                     )),
             
             # Second tab (About)
@@ -113,7 +116,7 @@ ui <- dashboardPage(
                         tags$h5("Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson (2020). shiny: Web Application Framework for R. R package version 1.5.0. https://CRAN.R-project.org/package=shiny"),
                         tags$h5("Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686"),
                         tags$h5("Winston Chang and Barbara Borges Ribeiro (2018). shinydashboard: Create Dashboards with 'Shiny'. R package version 0.7.1. https://CRAN.R-project.org/package=shinydashboard"))
-                    ),
+            ),
             
             # Third tab (Change in visitors by category)
             tabItem(tabName = "visitor_category",
@@ -123,22 +126,22 @@ ui <- dashboardPage(
                                    selectizeInput("visitor_country", "Change country",
                                                   choices = unique(visitors_total$Entity),
                                                   selected = "World Average")
-                                   ),
-                        
+                               ),
+                               
                                box(width = NULL, status = "warning",
                                    dateRangeInput("visitor_date", "Date Range: ",
                                                   start = min(visitors_total$Date),
                                                   end = max(visitors_total$Date),
                                                   min = min(visitors_total$Date), 
                                                   max = max(visitors_total$Date)))
-                               ),
+                        ),
                         
                         column(width = 3,
                                box(width = NULL, status = "warning",
                                    checkboxGroupInput("visitor_place", "Choose a place to show:",
                                                       choices = unique(visitors_total$Places),
                                                       selected = unique(visitors_total$Places)))
-                               ),
+                        ),
                         
                         column(width = 6,
                                box(width = NULL, solidHeader = TRUE, status = "warning", 
@@ -148,14 +151,14 @@ ui <- dashboardPage(
                                                             "Residential", "Transit Stations", 
                                                             "Workplaces"),
                                                 selected = "Parks")))
-                        ),
+                    ),
                     
                     fluidRow(
                         # Left column
                         column(width = 6,
                                box(width = NULL, solidHeader = TRUE,
                                    plotOutput("visitors", height = 500))
-                               ),
+                        ),
                         
                         # Right column
                         column(width = 6,
@@ -173,50 +176,50 @@ ui <- dashboardPage(
                                    tags$li("Grocery & Pharmacy includes places like grocery markets, food warehouses, farmers markets, specialty food shops, drug stores, and pharmacies."),
                                    tags$li("Transit Stations includes places like public transport hubs such as subway, bus, and train stations."),
                                    tags$li("Parks includes places like local parks, national parks, public beaches, marinas, dog parks, plazas, and public gardens."))))
-                    ),
+            ),
             
             # Forth tab (COVID-19 Cases/Deaths)
             tabItem(tabName = "covid_cases",
                     fluidRow(
-                    column(width = 6,
-                           fluidRow(
-                               column(width = 6,
-                                      box(width = NULL, solidHeader = TRUE, status = "warning", 
-                                          radioButtons("covid_category", "METRIC", 
-                                                       choices = c("Confirmed Cases" = "total_cases",
-                                                                   "Confirmed Deaths" = "total_deaths",
-                                                                   "Daily New Cases" = "new_cases",
-                                                                   "Daily New Deaths" = "new_deaths"),
-                                                       selected = "total_cases"))
-                                      ),
+                        column(width = 6,
+                               fluidRow(
+                                   column(width = 6,
+                                          box(width = NULL, solidHeader = TRUE, status = "warning", 
+                                              radioButtons("covid_category", "METRIC", 
+                                                           choices = c("Confirmed Cases" = "total_cases",
+                                                                       "Confirmed Deaths" = "total_deaths",
+                                                                       "Daily New Cases" = "new_cases",
+                                                                       "Daily New Deaths" = "new_deaths"),
+                                                           selected = "total_cases"))
+                                   ),
+                                   
+                                   column(width = 6,
+                                          box(width = NULL, status = "warning",
+                                              dateInput("covid_date", "Choose a date to show:",
+                                                        value = "2020-09-27",
+                                                        min = min(covid_raw$date), 
+                                                        max = max(covid_raw$date))))
+                               ),
                                
-                               column(width = 6,
-                                      box(width = NULL, status = "warning",
-                                          dateInput("covid_date", "Choose a date to show:",
-                                                    value = "2020-09-27",
-                                                    min = min(covid_raw$date), 
-                                                    max = max(covid_raw$date))))
+                               fluidRow(
+                                   box(width = NULL, solidHeader = TRUE,
+                                       plotlyOutput("covid_num", height = 550)))
+                        ),
+                        
+                        column(width = 6,
+                               box(width = NULL, status = "warning",
+                                   selectizeInput("covid_country", "Select Countries",
+                                                  choices = unique(covid_raw$location),
+                                                  multiple = TRUE,
+                                                  selected = c("United Kingdom", "United States", "Australia"))
                                ),
-                           
-                           fluidRow(
+                               
                                box(width = NULL, solidHeader = TRUE,
-                                   plotlyOutput("covid_num", height = 550)))
-                           ),
-                    
-                    column(width = 6,
-                           box(width = NULL, status = "warning",
-                               selectizeInput("covid_country", "Select Countries",
-                                              choices = unique(covid_raw$location),
-                                              multiple = TRUE,
-                                              selected = c("United Kingdom", "United States", "Australia"))
+                                   plotOutput("covid", height = 400)
                                ),
-                           
-                           box(width = NULL, solidHeader = TRUE,
-                               plotOutput("covid", height = 400)
-                               ),
-                           
-                           box(width = NULL, status = "info",
-                               tableOutput("covid_table")))),
+                               
+                               box(width = NULL, status = "info",
+                                   tableOutput("covid_table")))),
                     fluidRow(
                         column(width = 12,
                                box(width = NULL, solidHeader = TRUE,
@@ -232,10 +235,10 @@ ui <- dashboardPage(
                                    tags$br(),
                                    tags$dt("Clicking on any date in the left plot displays the summary table of that day on the table. The countries will be based on your selection which you can compare the numbers on the same day with several countries.")
                                )))
-                    )
             )
         )
     )
+)
 
 
 
@@ -253,7 +256,7 @@ server <- function(input, output, session) {
             sample_n(input$raw_data_row) %>%
             select(input$raw_data_variable) %>%
             as.data.frame()
-        })
+    })
     
     output$visitors <- renderPlot({
         visitors_total %>%
@@ -275,7 +278,7 @@ server <- function(input, output, session) {
     
     output$visitor_map <- renderPlot({
         ggplot(data = visitor_map %>% filter(Date == "2020-08-20",
-                                                      category == input$category)) +
+                                            category %in% input$category)) +
             borders() +
             geom_sf(aes(fill = change), lwd = 0) +
             scale_fill_viridis_c(option = "D") +
@@ -356,7 +359,7 @@ server <- function(input, output, session) {
                    "Dalit New Deaths" = new_deaths) %>%
             as.data.frame()
     })
-
+    
 }
 
 
