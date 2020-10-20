@@ -7,7 +7,6 @@ library(COVID19dashboard)
 library(shiny)
 library(tidyverse)
 library(rnaturalearth)
-#library(rnaturalearthdata)
 library(plotly)
 library(shinydashboard)
 library(lubridate)
@@ -22,11 +21,6 @@ world_sf <- ne_countries(scale = "medium", returnclass = "sf")
 
 visitor_map <- world_sf %>%
     inner_join(visitor_map, by = c("adm0_a3" = "Code"))
-
-# load(here::here("data/covid_raw.rda"))
-# load(here::here("data/visitor_map.rda"))
-# load(here::here("data/visitors_total.rda"))
-
 
 ######### Shiny UI #########
 
@@ -129,11 +123,17 @@ ui <- dashboardPage(
                                ),
                                
                                box(width = NULL, status = "warning",
-                                   dateRangeInput("visitor_date", "Date Range: ",
-                                                  start = min(visitors_total$Date),
-                                                  end = max(visitors_total$Date),
-                                                  min = min(visitors_total$Date), 
-                                                  max = max(visitors_total$Date)))
+                                   date_range(visitors_total, 
+                                              date_col = "Date",
+                                              "visitor_date")
+                                   
+                                   # Replaced by date_range function
+                                   # dateRangeInput("visitor_date", "Date Range: ",
+                                   #                start = min(visitors_total$Date),
+                                   #                end = max(visitors_total$Date),
+                                   #                min = min(visitors_total$Date), 
+                                   #                max = max(visitors_total$Date))
+                                   )
                         ),
                         
                         column(width = 3,
@@ -344,12 +344,14 @@ server <- function(input, output, session) {
     output$covid_table <- renderTable({
         covid_summ <- covid_raw %>%
             filter(date == input$covid_date,
-                   location %in% c(input$covid_country)) 
+                   location %in% c(input$covid_country)) %>%
+            add_comma(c("total_cases", "new_cases", "total_deaths", "new_deaths"))
         
-        covid_summ$`total_cases` <- scales::comma(covid_summ$`total_cases`, accuracy = 1)
-        covid_summ$`new_cases` <- scales::comma(covid_summ$`new_cases`, accuracy = 1)
-        covid_summ$`total_deaths` <- scales::comma(covid_summ$`total_deaths`, accuracy = 1)
-        covid_summ$`new_deaths` <- scales::comma(covid_summ$`new_deaths`, accuracy = 1)
+        # Replaced by add_comma() function
+        # covid_summ$`total_cases` <- scales::comma(covid_summ$`total_cases`, accuracy = 1)
+        # covid_summ$`new_cases` <- scales::comma(covid_summ$`new_cases`, accuracy = 1)
+        # covid_summ$`total_deaths` <- scales::comma(covid_summ$`total_deaths`, accuracy = 1)
+        # covid_summ$`new_deaths` <- scales::comma(covid_summ$`new_deaths`, accuracy = 1)
         
         covid_summ %>%
             select("Country" = location,

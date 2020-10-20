@@ -25,4 +25,3 @@ Suggests:
     dplyr,
     tidyverse
 VignetteBuilder: knitr
-

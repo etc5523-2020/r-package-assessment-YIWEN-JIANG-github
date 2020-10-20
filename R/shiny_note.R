@@ -9,9 +9,6 @@
 #' @details NULL
 #' 
 #' 
-#' 
-#' 
-#' 
 #' @format NULL
 #' @usage NULL
 #' 
