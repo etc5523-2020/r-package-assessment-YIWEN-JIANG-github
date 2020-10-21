@@ -16,3 +16,9 @@ The outbreak was declared a Public Health Emergency of International Concern in 
 As of 11 October 2020, more than 37.2 million cases have been confirmed as well as more than 1.07 million deaths attributed to COVID-19.
 The aim of this shiny dashboard is to complement the raw data by providing interactive visualisation which is not available by the news, including the timeline function and the ability to compare between countries.
 }
+\examples{
+\dontrun{
+launch_app()
+}
+
+}

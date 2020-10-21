@@ -28,7 +28,7 @@
 #' 
 #' @import shiny
 #' 
-#' @example 
+#' @examples 
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #'

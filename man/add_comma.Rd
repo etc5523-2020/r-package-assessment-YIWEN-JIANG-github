@@ -3,6 +3,9 @@
 \name{add_comma}
 \alias{add_comma}
 \title{Label numbers in decimal format (e.g. 1,234)}
+\usage{
+add_comma(data, col)
+}
 \arguments{
 \item{data}{A data frame, data frame extension (e.g. a tibble),
 or a lazy data frame (e.g. from dbplyr or dtplyr).}

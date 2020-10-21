@@ -14,7 +14,7 @@
 #' @format NULL
 #' @usage NULL
 #' 
-#' @example 
+#' @examples 
 #' \dontrun{
 #' launch_app()
 #' }

@@ -6,13 +6,8 @@
 #' 
 #' @param ... HTML tags used to add text into shiny app
 #' 
-#' @details NULL
 #' 
 #' 
-#' @format NULL
-#' @usage NULL
-#' 
-#' @importFrom graphics box
 #' 
 #' @examples 
 #' \dontrun{
@@ -24,7 +19,8 @@
 #'     )
 #' }
 #' 
-#' @import shiny
+#' @import shinydashboard
+#' 
 #' 
 #' @export
 shiny_note <- function(...){
@@ -33,5 +29,6 @@ shiny_note <- function(...){
       helpText("How you can interact with those plots and what the outputs of those plots?"),
       ...
       )
+  
 }
 

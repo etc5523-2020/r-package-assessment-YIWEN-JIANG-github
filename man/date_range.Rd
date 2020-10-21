@@ -32,6 +32,17 @@ The date \code{format} string specifies how the date will be displayed in the br
 \item \code{DD} Full weekday name
 }
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()) {
+
+ui <- fluidPage(
+  date_range(covid_raw, "daterange"))
+                 
+shinyApp(ui, server = function(input, output) { })
+}
+
+}
 \seealso{
 \code{\link[=dateInput]{dateInput()}}, \code{\link[=updateDateRangeInput]{updateDateRangeInput()}}
 }

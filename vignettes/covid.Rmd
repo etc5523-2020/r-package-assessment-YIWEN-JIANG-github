@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+# What the COVID-19 dashboard does?
+
 The **COVID19dashboard** package used to provide interactive visualisation of the COVID-19 pandemic dataset by using shiny dashboard. The COVID-19 data contains the data over 210 countries since 31 Dec, 2019. The COVID-19 data sourced from [Our World in Data](https://ourworldindata.org/coronavirus).
 
 The package and part of the data can be accessed via:
@@ -27,13 +29,17 @@ library(tibble)
 covid_raw
 ```
 
+# How to launch the COVID-19 dashboard?
+
 By using the `launch_app()` function to run the shiny dashboard. The aim of this app is to complement the raw data by providing interactive visualisation, and used to compare the difference between the countries.  
 
 ```{r launch-shiny-app, eval=FALSE}
 launch_app()
 ```
 
-The shiny app contains four tabs:  Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.  
+# How to use the COVID-19 dashboard
+
+The shiny dashboard contains four tabs:  Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.  
 
 - **Data**: To display the raw data used in this app, users can select the variables and observations they want to view.  
 - **About**: Relevant information about this app, such background of the COVID-19, code used to create this app, creator and references.  
@@ -45,7 +51,6 @@ The shiny app contains four tabs:  Data, About, Change in Visitors by Category a
 Change in the number of daily new cases in United States:
 
 ```{r usa-daily-new-cases}
-library(ggplot2)
 library(tidyverse)
 covid_raw %>%
   dplyr::filter(location == "United States") %>%

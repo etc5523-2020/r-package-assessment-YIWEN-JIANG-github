@@ -17,11 +17,13 @@ Depends:
     R (>= 2.10),
     shiny,
     scales,
-    tibble
+    tibble,
+    shinydashboard
 Suggests: 
     knitr,
     rmarkdown,
     ggplot2,
     dplyr,
-    tidyverse
+    tidyverse,
+    testthat
 VignetteBuilder: knitr

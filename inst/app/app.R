@@ -64,12 +64,11 @@ ui <- dashboardPage(
                                                min = 5, max = 50,
                                                value = 20))),
                         column(width = 6,  
-                               box(width = NULL, status = "warning",
-                                   helpText("How you can interact with those plots and what the outputs of those plots?"),
-                                   tags$dt("This interactive table shows the worldwide COVID-19 raw data used for this shiny app."), 
-                                   tags$li("With the 'Select variable' option in the top left corner, you can select the part of the variables in the raw data."),  
-                                   tags$li("With the 'Rows to show' option in the middle, you can select the part of the observations in the raw data."), 
-                                   tags$dt("Most of the values of the variables 'Total tests' and 'New tests' are missing.")))
+                               shiny_note(tags$dt("This interactive table shows the worldwide COVID-19 raw data used for this shiny app."),
+                                          tags$li("With the 'Select variable' option in the top left corner, you can select the part of the variables in the raw data."),  
+                                          tags$li("With the 'Rows to show' option in the middle, you can select the part of the observations in the raw data."), 
+                                          tags$dt("Most of the values of the variables 'Total tests' and 'New tests' are missing."))
+                               )
                     ),
                     
                     fluidRow(

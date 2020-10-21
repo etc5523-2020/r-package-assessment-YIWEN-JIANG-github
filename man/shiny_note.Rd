@@ -3,6 +3,9 @@
 \name{shiny_note}
 \alias{shiny_note}
 \title{Add a note box into shiny app}
+\usage{
+shiny_note(...)
+}
 \arguments{
 \item{...}{HTML tags used to add text into shiny app}
 }
