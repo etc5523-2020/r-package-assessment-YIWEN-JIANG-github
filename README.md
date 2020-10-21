@@ -7,12 +7,22 @@
 
 [![R build
 status](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/actions)
+[![License:
+GPL](https://img.shields.io/badge/License-GPL-3.svg)](http://www.gnu.org/licenses/gpl-3.0.en.html)
+[![GitHub
+commit](https://img.shields.io/github/last-commit/etc5523-2020/r-package-assessment-YIWEN-JIANG-github)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/commit/master)
 <!-- badges: end -->
 
 ## Overview
 
 The goal of COVID19dashboard is to provides datasets and functions for
 run the COVID-19 shiny dashboard.
+
+The Shiny app, first launched on Oct 2020, aims to complement existing
+COVID-19 mapping dashboards (such as those developed by the
+[WHO](https://covid19.who.int/)) with several interactive features,
+including the timeline function and the ability to compare between
+countries.
 
 ## Installation
 
@@ -28,16 +38,20 @@ devtools::install_github("etc5523-2020/r-package-assessment-YIWEN-JIANG-github")
 
 The data set records COVID-19 information since Dec 31, 2019 and
 provided by [Our World in Data](https://ourworldindata.org/coronavirus).
+
 The package include three data, which are `covid_raw`, `visitor_map` and
-`visitors_total`.  
-\- `covid_raw`: The data comes from covid\_raw.rda. The data contains
-the COVID-19 information OF 210 countries since Dec 31, 2019.  
-\- `visitors_total`: The data comes from visitors\_total.rda. The data
-contains the information how the number of visitors change sine pandemic
-for different places.  
-\- `visitor_map`: The data comes from visitor\_map.rda. The data added
-geometric information compare to `visitors_total`, it can be used to
-create map plot.
+`visitors_total`.
+
+  - `covid_raw`: The data comes from covid\_raw.rda. The data contains
+    the COVID-19 information OF 210 countries since Dec 31, 2019.  
+  - `visitors_total`: The data comes from visitors\_total.rda. The data
+    contains the information how the number of visitors change sine
+    pandemic for different places.  
+  - `visitor_map`: The data comes from visitor\_map.rda. The data added
+    geometric information compare to `visitors_total`, it can be used to
+    create map plot.
+
+## Shiny interface (How to run the app)
 
 By using the `launch_app()` function to run the shiny dashboard. The aim
 of this app is to complement the raw data by providing interactive
@@ -47,6 +61,10 @@ visualisation, and used to compare the difference between the countries.
 launch_app()
 ```
 
+A screenshot of the interface is provided below.
+
+![shiny interface](shiny_interface.png)
+
 ## Example
 
 This is a basic example which shows you the COVID-19 data in this
@@ -54,8 +72,9 @@ package:
 
 ``` r
 library(COVID19dashboard)
-#> Loading required package: tibble
 #> Loading required package: shiny
+#> Loading required package: scales
+#> Loading required package: tibble
 library(tibble)
 covid_raw
 #> # A tibble: 46,484 x 41
@@ -87,18 +106,27 @@ covid_raw
 #> #   life_expectancy <dbl>, human_development_index <dbl>
 ```
 
-Change in the number of daily new cases in United States:
+There are four functions inside this package, which are:
+
+  - `launch_app()`: Launch the COVID-19 shiny dashboard  
+  - `add_comma()`: Label numbers in decimal format (e.g. 1,234)  
+  - `shiny_note()`: Add a note box into shiny app  
+  - `date_range()`: Create date range input
+
+### Plotting the active cases distribution
 
 ``` r
-library(ggplot2)
 library(tidyverse)
 #> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-#> ✓ tidyr   1.1.2     ✓ dplyr   1.0.2
-#> ✓ readr   1.4.0     ✓ stringr 1.4.0
-#> ✓ purrr   0.3.4     ✓ forcats 0.5.0
+#> ✓ ggplot2 3.3.2     ✓ dplyr   1.0.2
+#> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+#> ✓ readr   1.4.0     ✓ forcats 0.5.0
+#> ✓ purrr   0.3.4
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
+#> x readr::col_factor() masks scales::col_factor()
+#> x purrr::discard()    masks scales::discard()
+#> x dplyr::filter()     masks stats::filter()
+#> x dplyr::lag()        masks stats::lag()
 covid_raw %>%
   dplyr::filter(location == "United States") %>%
   ggplot() +
@@ -109,4 +137,4 @@ covid_raw %>%
   ggtitle("Number of Daily New Cases in United States")
 ```
 
-<img src="man/figures/README-usa-daily-new-cases-1.png" width="100%" />
+<img src="man/figures/README-usa-daily-new-cases-1.png" width="80%" style="display: block; margin: auto;" />

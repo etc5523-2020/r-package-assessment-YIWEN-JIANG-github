@@ -1,4 +1,4 @@
-#' Launch shiny app
+#' Launch the COVID-19 shiny dashboard
 #' 
 #' The `launch_app()` function is used to load the coronavirus pandemic shiny application.
 #' 

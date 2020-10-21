@@ -2,7 +2,7 @@
 % Please edit documentation in R/launch_app.R
 \name{launch_app}
 \alias{launch_app}
-\title{Launch shiny app}
+\title{Launch the COVID-19 shiny dashboard}
 \arguments{
 \item{data}{A dataset containing COVID-19 relevant information.}
 }
