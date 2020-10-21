@@ -71,7 +71,8 @@
 
       
 
-      </header><script src="covid_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="covid_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="covid_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="covid_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>COVID-19 Pandemic</h1>
@@ -84,6 +85,9 @@
 
     
     
+<div id="what-the-covid-19-dashboard-does" class="section level1">
+<h1 class="hasAnchor">
+<a href="#what-the-covid-19-dashboard-does" class="anchor"></a>What the COVID-19 dashboard does?</h1>
 <p>The <strong>COVID19dashboard</strong> package used to provide interactive visualisation of the COVID-19 pandemic dataset by using shiny dashboard. The COVID-19 data contains the data over 210 countries since 31 Dec, 2019. The COVID-19 data sourced from <a href="https://ourworldindata.org/coronavirus">Our World in Data</a>.</p>
 <p>The package and part of the data can be accessed via:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
@@ -91,6 +95,12 @@
 <span class="co">#&gt; Loading required package: shiny</span>
 <span class="co">#&gt; Loading required package: scales</span>
 <span class="co">#&gt; Loading required package: tibble</span>
+<span class="co">#&gt; Loading required package: shinydashboard</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'shinydashboard'</span>
+<span class="co">#&gt; The following object is masked from 'package:graphics':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     box</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
 <span class="va">covid_raw</span>
 <span class="co">#&gt; # A tibble: 46,484 x 41</span>
@@ -120,10 +130,18 @@
 <span class="co">#&gt; #   diabetes_prevalence &lt;dbl&gt;, female_smokers &lt;dbl&gt;, male_smokers &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   handwashing_facilities &lt;dbl&gt;, hospital_beds_per_thousand &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   life_expectancy &lt;dbl&gt;, human_development_index &lt;dbl&gt;</span></pre></div>
+</div>
+<div id="how-to-launch-the-covid-19-dashboard" class="section level1">
+<h1 class="hasAnchor">
+<a href="#how-to-launch-the-covid-19-dashboard" class="anchor"></a>How to launch the COVID-19 dashboard?</h1>
 <p>By using the <code><a href="../reference/launch_app.html">launch_app()</a></code> function to run the shiny dashboard. The aim of this app is to complement the raw data by providing interactive visualisation, and used to compare the difference between the countries.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="fu"><a href="../reference/launch_app.html">launch_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<p>The shiny app contains four tabs: Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.</p>
+</div>
+<div id="how-to-use-the-covid-19-dashboard" class="section level1">
+<h1 class="hasAnchor">
+<a href="#how-to-use-the-covid-19-dashboard" class="anchor"></a>How to use the COVID-19 dashboard</h1>
+<p>The shiny dashboard contains four tabs: Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.</p>
 <ul>
 <li>
 <strong>Data</strong>: To display the raw data used in this app, users can select the variables and observations they want to view.<br>
@@ -137,17 +155,18 @@
 <li>
 <strong>COVID-19 Cases/Deaths</strong>: Use plots and tables to show the difference in the number of cases and deaths between countries, as well as the trend of those number changes over the past few months.</li>
 </ul>
+</div>
 <div id="exploration-of-the-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#exploration-of-the-data" class="anchor"></a>Exploration of the data</h1>
 <p>Change in the number of daily new cases in United States:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✔ tidyr   1.1.2     ✔ dplyr   1.0.2</span>
-<span class="co">#&gt; ✔ readr   1.4.0     ✔ stringr 1.4.0</span>
-<span class="co">#&gt; ✔ purrr   0.3.4     ✔ forcats 0.5.0</span>
+<span class="co">#&gt; ✔ ggplot2 3.3.2     ✔ dplyr   1.0.2</span>
+<span class="co">#&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0</span>
+<span class="co">#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.0</span>
+<span class="co">#&gt; ✔ purrr   0.3.4</span>
 <span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; ✖ readr::col_factor() masks scales::col_factor()</span>
 <span class="co">#&gt; ✖ purrr::discard()    masks scales::discard()</span>
@@ -155,12 +174,12 @@
 <span class="co">#&gt; ✖ dplyr::lag()        masks stats::lag()</span>
 <span class="va">covid_raw</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">location</span> <span class="op">==</span> <span class="st">"United States"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">new_cases</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of Daily New Cases"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Date"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Number of Daily New Cases in United States"</span><span class="op">)</span></pre></div>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">new_cases</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Number of Daily New Cases"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Date"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Number of Daily New Cases in United States"</span><span class="op">)</span></pre></div>
 <p><img src="covid_files/figure-html/usa-daily-new-cases-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
   </div>
