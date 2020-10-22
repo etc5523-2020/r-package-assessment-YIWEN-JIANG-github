@@ -73,8 +73,13 @@ package:
 ``` r
 library(COVID19dashboard)
 #> Loading required package: shiny
-#> Loading required package: scales
 #> Loading required package: tibble
+#> Loading required package: shinydashboard
+#> 
+#> Attaching package: 'shinydashboard'
+#> The following object is masked from 'package:graphics':
+#> 
+#>     box
 library(tibble)
 covid_raw
 #> # A tibble: 46,484 x 41
@@ -123,10 +128,8 @@ library(tidyverse)
 #> ✓ readr   1.4.0     ✓ forcats 0.5.0
 #> ✓ purrr   0.3.4
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> x readr::col_factor() masks scales::col_factor()
-#> x purrr::discard()    masks scales::discard()
-#> x dplyr::filter()     masks stats::filter()
-#> x dplyr::lag()        masks stats::lag()
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
 covid_raw %>%
   dplyr::filter(location == "United States") %>%
   ggplot() +

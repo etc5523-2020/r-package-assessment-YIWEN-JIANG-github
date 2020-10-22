@@ -14,3 +14,18 @@ navbar:
     github:
       icon: fa-github
       href: https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github
+
+reference:
+- title: "COVID-19 Data"
+  contents:
+  - covid_raw
+  - visitor_map
+  - visitors_total
+- title: "Launch COVID-19 shiny dashboard"
+  contents:
+  - launch_app
+- title: "Other functions use in shiny UI and server"
+  contents:
+  - add_comma
+  - shiny_note
+  - date_range

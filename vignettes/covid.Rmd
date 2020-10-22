@@ -17,9 +17,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# What the COVID-19 dashboard does?
+# What does the COVID-19 dashboard do?
 
-The **COVID19dashboard** package used to provide interactive visualisation of the COVID-19 pandemic dataset by using shiny dashboard. The COVID-19 data contains the data over 210 countries since 31 Dec, 2019. The COVID-19 data sourced from [Our World in Data](https://ourworldindata.org/coronavirus).
+The **COVID19dashboard** package used to provide interactive visualisation of the COVID-19 pandemic dataset by using the shiny dashboard. The COVID-19 data contains the data over 210 countries since 31 Dec 2019. The COVID-19 data sourced from [Our World in Data](https://ourworldindata.org/coronavirus).
 
 The package and part of the data can be accessed via:
 
@@ -31,7 +31,7 @@ covid_raw
 
 # How to launch the COVID-19 dashboard?
 
-By using the `launch_app()` function to run the shiny dashboard. The aim of this app is to complement the raw data by providing interactive visualisation, and used to compare the difference between the countries.  
+By using the `launch_app()` function to run the shiny dashboard. This app aims to complement the raw data by providing interactive visualisation and used to compare the difference between the countries.  
 
 ```{r launch-shiny-app, eval=FALSE}
 launch_app()
@@ -48,7 +48,7 @@ The shiny dashboard contains four tabs:  Data, About, Change in Visitors by Cate
 
 # Exploration of the data
 
-Change in the number of daily new cases in United States:
+Change in the number of daily new cases in the United States:
 
 ```{r usa-daily-new-cases}
 library(tidyverse)
