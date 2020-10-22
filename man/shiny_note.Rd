@@ -7,7 +7,7 @@
 shiny_note(...)
 }
 \arguments{
-\item{...}{HTML tags used to add text into shiny app}
+\item{...}{HTML tags used to add text into the shiny app}
 }
 \description{
 \code{shiny_note()} is a function that inserts a box that contains elements of note.

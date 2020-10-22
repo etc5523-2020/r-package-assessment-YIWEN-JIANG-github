@@ -4,7 +4,7 @@
 #' Using HTML tags to write you own notes for your shiny app, 
 #' including How to interactive with the app, what does the output mean
 #' 
-#' @param ... HTML tags used to add text into shiny app
+#' @param ... HTML tags used to add text into the shiny app
 #' 
 #' 
 #' 

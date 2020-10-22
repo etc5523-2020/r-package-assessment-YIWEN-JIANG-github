@@ -3,7 +3,7 @@
 \docType{data}
 \name{visitor_map}
 \alias{visitor_map}
-\title{World wide the number of visitors change since the beginning of the pandemic with location information}
+\title{World wide the number of visitors changes since the beginning of the pandemic with location information}
 \format{
 Data frame with columns
 \describe{
@@ -12,19 +12,17 @@ Data frame with columns
 \item{Date}{Date of the information been recorded}
 \item{category}{Categorized places}
 \item{change}{Changes compared to our baseline days}
-\item{geometry}{Country polygons}
 }
 }
 \source{
 Google Community Mobility Reports
 \url{https://www.google.com/covid19/mobility/}
-and \code{rnaturalearth} package
 }
 \usage{
 visitor_map
 }
 \description{
-The data contains the information of how visitors to (or time spent in) categorized places change compared to the baseline days.
+The data contains the information on how visitors to (or time spent in) categorized places change compared to the baseline days.
 A baseline day represents a normal value for that day of the week.
 The baseline day is the median value from the 5‑week period Jan 3 – Feb 6, 2020.
 And the world country polygons at a specified scale

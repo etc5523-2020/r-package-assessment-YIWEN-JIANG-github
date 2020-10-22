@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R build status](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/actions)
-[![License: GPL](https://img.shields.io/badge/License-GPL-3.svg)](http://www.gnu.org/licenses/gpl-3.0.en.html)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![GitHub commit](https://img.shields.io/github/last-commit/etc5523-2020/r-package-assessment-YIWEN-JIANG-github)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/commit/master) 
 <!-- badges: end -->
 
@@ -56,7 +56,7 @@ launch_app()
 
 A screenshot of the interface is provided below.
 
-![shiny interface](shiny_interface.png)
+![shiny interface](man/figures/README-shiny_interface.png)
 
 ## Example
 
@@ -88,3 +88,8 @@ covid_raw %>%
   xlab("Date") +
   ggtitle("Number of Daily New Cases in United States")
 ```
+
+## Data Source
+
+- Our World in Data: https://ourworldindata.org/coronavirus
+- Google Community Mobility Reports: https://www.google.com/covid19/mobility/

@@ -7,22 +7,22 @@
 
 [![R build
 status](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/actions)
-[![License:
-GPL](https://img.shields.io/badge/License-GPL-3.svg)](http://www.gnu.org/licenses/gpl-3.0.en.html)
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![GitHub
 commit](https://img.shields.io/github/last-commit/etc5523-2020/r-package-assessment-YIWEN-JIANG-github)](https://github.com/etc5523-2020/r-package-assessment-YIWEN-JIANG-github/commit/master)
 <!-- badges: end -->
 
 ## Overview
 
-The goal of COVID19dashboard is to provides datasets and functions for
-run the COVID-19 shiny dashboard.
+The goal of COVID19dashboard package is to provide datasets and
+functions to run the COVID-19 shiny dashboard.
 
-The Shiny app, first launched on Oct 2020, aims to complement existing
-COVID-19 mapping dashboards (such as those developed by the
-[WHO](https://covid19.who.int/)) with several interactive features,
-including the timeline function and the ability to compare between
-countries.
+The COVID-19 shiny dashboard, first launched on Oct 2020, aims to
+complement existing COVID-19 mapping dashboards (such as those developed
+by the [WHO](https://covid19.who.int/)) with several interactive
+features, including the timeline function and the ability to compare
+between countries.
 
 ## Installation
 
@@ -36,26 +36,26 @@ devtools::install_github("etc5523-2020/r-package-assessment-YIWEN-JIANG-github")
 
 ## Get started
 
-The data set records COVID-19 information since Dec 31, 2019 and
+The data set records COVID-19 information since Dec 31, 2019, and
 provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 
-The package include three data, which are `covid_raw`, `visitor_map` and
-`visitors_total`.
+The package includes three data, which are `covid_raw`, `visitor_map`
+and `visitors_total`.
 
   - `covid_raw`: The data comes from covid\_raw.rda. The data contains
-    the COVID-19 information OF 210 countries since Dec 31, 2019.  
+    the COVID-19 information of 210 countries since Dec 31, 2019.  
   - `visitors_total`: The data comes from visitors\_total.rda. The data
-    contains the information how the number of visitors change sine
+    contains information on how the number of visitors changes sine
     pandemic for different places.  
   - `visitor_map`: The data comes from visitor\_map.rda. The data added
     geometric information compare to `visitors_total`, it can be used to
-    create map plot.
+    create a map plot.
 
 ## Shiny interface (How to run the app)
 
-By using the `launch_app()` function to run the shiny dashboard. The aim
-of this app is to complement the raw data by providing interactive
-visualisation, and used to compare the difference between the countries.
+By using the `launch_app()` function to run the shiny dashboard. This
+app aims to complement the raw data by providing interactive
+visualisation and used to compare the difference between the countries.
 
 ``` r
 launch_app()
@@ -63,7 +63,7 @@ launch_app()
 
 A screenshot of the interface is provided below.
 
-![shiny interface](shiny_interface.png)
+![shiny interface](man/figures/README-shiny_interface.png)
 
 ## Example
 
@@ -118,7 +118,7 @@ There are four functions inside this package, which are:
   - `shiny_note()`: Add a note box into shiny app  
   - `date_range()`: Create date range input
 
-### Plotting the active cases distribution
+### Plotting the number of daily new cases in the United States
 
 ``` r
 library(tidyverse)
@@ -141,3 +141,9 @@ covid_raw %>%
 ```
 
 <img src="man/figures/README-usa-daily-new-cases-1.png" width="80%" style="display: block; margin: auto;" />
+
+## Data Source
+
+  - Our World in Data: <https://ourworldindata.org/coronavirus>
+  - Google Community Mobility Reports:
+    <https://www.google.com/covid19/mobility/>

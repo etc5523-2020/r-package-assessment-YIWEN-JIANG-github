@@ -7,14 +7,14 @@
 date_range(data, date_col = "date", input_id)
 }
 \arguments{
-\item{data}{The data used to create tables ot plots which are correlated to the input}
+\item{data}{The data used to create tables to plots which are correlated to the input}
 
 \item{date_col}{The column name in the data which contain the date information. The default value is \code{date}.}
 
 \item{input_id}{The input slot that will be used to access the value.}
 }
 \description{
-\code{date_range} is a function that create date range input into shiny app.
+\code{date_range} is a function that creates date range input into the shiny app.
 When clicked on, bring up calendars that the user can click on to select dates.
 }
 \details{

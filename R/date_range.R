@@ -1,9 +1,9 @@
 #' Create date range input
 #' 
-#' `date_range` is a function that create date range input into shiny app. 
+#' `date_range` is a function that creates date range input into the shiny app. 
 #' When clicked on, bring up calendars that the user can click on to select dates.
 #' 
-#' @param data The data used to create tables ot plots which are correlated to the input
+#' @param data The data used to create tables to plots which are correlated to the input
 #' @param date_col The column name in the data which contain the date information. The default value is `date`.
 #' @param input_id The input slot that will be used to access the value.
 #' 
