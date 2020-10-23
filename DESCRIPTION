@@ -20,7 +20,8 @@ Depends:
     tidyverse,
     rnaturalearth,
     rnaturalearthdata,
-    rgeos
+    rgeos,
+    maps
 Imports:
     scales,
     shinydashboard,
