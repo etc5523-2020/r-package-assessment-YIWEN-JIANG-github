@@ -96,12 +96,15 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">COVID19dashboard</span><span class="op">)</span>
 <span class="co">#&gt; Loading required package: shiny</span>
 <span class="co">#&gt; Loading required package: tibble</span>
-<span class="co">#&gt; Loading required package: shinydashboard</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'shinydashboard'</span>
-<span class="co">#&gt; The following object is masked from 'package:graphics':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     box</span>
+<span class="co">#&gt; Loading required package: tidyverse</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
+<span class="co">#&gt; ✔ ggplot2 3.3.2     ✔ dplyr   1.0.2</span>
+<span class="co">#&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0</span>
+<span class="co">#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.0</span>
+<span class="co">#&gt; ✔ purrr   0.3.4</span>
+<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span>
 <span class="co">#&gt; Loading required package: rnaturalearth</span>
 <span class="co">#&gt; Loading required package: rgeos</span>
 <span class="co">#&gt; Loading required package: sp</span>
@@ -170,14 +173,6 @@
 <p>Change in the number of daily new cases in the United States:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✔ ggplot2 3.3.2     ✔ dplyr   1.0.2</span>
-<span class="co">#&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0</span>
-<span class="co">#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.0</span>
-<span class="co">#&gt; ✔ purrr   0.3.4</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span>
 <span class="va">covid_raw</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">location</span> <span class="op">==</span> <span class="st">"United States"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
