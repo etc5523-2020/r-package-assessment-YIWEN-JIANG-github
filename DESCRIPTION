@@ -18,7 +18,8 @@ Depends:
     shiny,
     tibble,
     shinydashboard,
-    rnaturalearth
+    rnaturalearth,
+    rgeos
 Imports:
     scales,
     tidyverse,
