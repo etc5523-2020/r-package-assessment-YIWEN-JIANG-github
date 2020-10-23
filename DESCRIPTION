@@ -26,7 +26,8 @@ Imports:
     shinydashboard,
     plotly,
     lubridate,
-    kableExtra
+    kableExtra,
+    maps
 Suggests: 
     knitr,
     rmarkdown,
