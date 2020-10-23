@@ -19,12 +19,16 @@ Depends:
     tibble,
     shinydashboard
 Imports:
-    scales
+    scales,
+    tidyverse,
+    rnaturalearth,
+    plotly,
+    lubridate,
+    kableExtra
 Suggests: 
     knitr,
     rmarkdown,
     ggplot2,
     dplyr,
-    tidyverse,
     testthat
 VignetteBuilder: knitr

@@ -10,10 +10,7 @@ library(rnaturalearth)
 library(plotly)
 library(shinydashboard)
 library(lubridate)
-library(scales)
 library(kableExtra)
-library(here)
-
 
 ########## Load data ################
 
