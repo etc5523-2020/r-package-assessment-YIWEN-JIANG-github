@@ -17,12 +17,12 @@ Depends:
     R (>= 2.10),
     shiny,
     tibble,
-    shinydashboard,
+    tidyverse,
     rnaturalearth,
     rgeos
 Imports:
     scales,
-    tidyverse,
+    shinydashboard,
     plotly,
     lubridate,
     kableExtra
