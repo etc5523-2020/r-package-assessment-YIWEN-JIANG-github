@@ -19,6 +19,7 @@ Depends:
     tibble,
     tidyverse,
     rnaturalearth,
+    rnaturalearthdata,
     rgeos
 Imports:
     scales,
